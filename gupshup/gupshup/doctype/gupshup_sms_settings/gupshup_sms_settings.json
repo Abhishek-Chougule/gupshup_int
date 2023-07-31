@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-27 11:41:44.326288",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "section_break_gkzbm",
+  "x_api_key",
+  "userid",
+  "auth_scheme",
+  "format",
+  "user_number",
+  "column_break_bcuuy",
+  "app_name",
+  "password",
+  "method",
+  "msg_type",
+  "v"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_gkzbm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "x_api_key",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "X API Key",
+   "reqd": 1
+  },
+  {
+   "fieldname": "userid",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Userid",
+   "reqd": 1
+  },
+  {
+   "fieldname": "password",
+   "fieldtype": "Password",
+   "in_list_view": 1,
+   "label": "Password",
+   "reqd": 1
+  },
+  {
+   "default": "plain",
+   "fieldname": "auth_scheme",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Auth Scheme",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_bcuuy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "sendMessage",
+   "fieldname": "method",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Method",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "text",
+   "fieldname": "msg_type",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Msg Type",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "TEXT",
+   "fieldname": "format",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Format",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "1.1",
+   "fieldname": "v",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "V",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "app_name",
+   "fieldtype": "Data",
+   "label": "App Name"
+  },
+  {
+   "fieldname": "user_number",
+   "fieldtype": "Data",
+   "label": "User Number"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-07-27 14:31:26.439298",
+ "modified_by": "Administrator",
+ "module": "Gupshup",
+ "name": "Gupshup SMS Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

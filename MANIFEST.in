@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include gupshup *.css
+recursive-include gupshup *.csv
+recursive-include gupshup *.html
+recursive-include gupshup *.ico
+recursive-include gupshup *.js
+recursive-include gupshup *.json
+recursive-include gupshup *.md
+recursive-include gupshup *.png
+recursive-include gupshup *.py
+recursive-include gupshup *.svg
+recursive-include gupshup *.txt
+recursive-exclude gupshup *.pyc
