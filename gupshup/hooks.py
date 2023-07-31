@@ -64,7 +64,7 @@ app_include_js = ["/assets/gupshup/js/lead.js","/assets/gupshup/js/contact.js"]
 # Installation
 # ------------
 
-before_install = "gupshup.install.before_install"
+# before_install = "gupshup.install.before_install" 
 # after_install = "gupshup.install.after_install"
 
 # Uninstallation
