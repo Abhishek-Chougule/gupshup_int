@@ -1,4 +1,4 @@
-frappe.ui.form.on('Lead', {
+frappe.ui.form.on('Contact', {
     refresh: async function (frm) {
 
     //GupShup MrAbhi------------------------------------------------------------------------
