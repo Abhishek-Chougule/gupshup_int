@@ -55,6 +55,7 @@ frappe.ui.form.on('Contact', {
             primary_action_label: 'Send SMS',
             primary_action(values) {
                 let msgValue = values.msg;
+                let dlttemplateidValue = values.dlttemplateid;
                 let senttoValue = values.send_to;
                 frappe.call({
                     method: "gupshup.api.send_sms",

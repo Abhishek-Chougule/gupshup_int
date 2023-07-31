@@ -67,7 +67,8 @@ def send_sms(primary_mobile,msg,dlttemplateid):
                 
                 post_gs_history(status,gss.userid,primary_mobile,msg,dt,current_user)
                 # frappe.msgprint(strPassword)
-                frappe.msgprint(str(deatils), title='Gupshup SMS', indicator='blue',wide=True)
+               
+                frappe.msgprint("Status : "+status, title='Gupshup SMS', indicator='green' if status=="Success" else 'red',wide=True)
                 
        
             else:
