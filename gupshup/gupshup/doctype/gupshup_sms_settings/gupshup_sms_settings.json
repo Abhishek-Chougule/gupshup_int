@@ -57,10 +57,7 @@
    "default": "plain",
    "fieldname": "auth_scheme",
    "fieldtype": "Data",
-   "hidden": 1,
-   "in_list_view": 1,
    "label": "Auth Scheme",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -71,36 +68,28 @@
    "default": "SendMessage",
    "fieldname": "method",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "Method",
-   "read_only": 1,
    "reqd": 1
   },
   {
    "default": "TEXT",
    "fieldname": "msg_type",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "Msg Type",
-   "read_only": 1,
    "reqd": 1
   },
   {
    "default": "text",
    "fieldname": "format",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "Format",
-   "read_only": 1,
    "reqd": 1
   },
   {
    "default": "1.1",
    "fieldname": "v",
    "fieldtype": "Data",
-   "hidden": 1,
    "label": "V",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -118,7 +107,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-07-31 17:46:48.025351",
+ "modified": "2023-07-31 18:11:33.143847",
  "modified_by": "Administrator",
  "module": "Gupshup",
  "name": "Gupshup SMS Settings",

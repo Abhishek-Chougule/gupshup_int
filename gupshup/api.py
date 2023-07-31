@@ -38,37 +38,37 @@ def send_sms(primary_mobile,msg,dlttemplateid):
 
 
     if gss.enabled==1:
-            
-            url = "http://enterprise.smsgupshup.com/GatewayAPI/rest"
+            baseurl = "http://enterprise.smsgupshup.com/GatewayAPI/rest"
+            userid= gss.userid
+            password= strPassword
+            send_to= primary_mobile
+            msg= msg
+            method= gss.method
+            msg_type= gss.msg_type
+            format= gss.format
+            auth_scheme= gss.auth_scheme
+            v= gss.v
+            principalentityid= gss.principalentityid
+            dlttemplateid= dlttemplateid
 
-            payload = {
-                "userid": gss.userid,
-                "password": strPassword,
-                "send_to": primary_mobile,
-                "msg": msg,
-                "method": gss.method,
-                "msg_type": gss.msg_type,
-                "format": gss.format,
-                "auth_scheme": gss.auth_scheme,
-                "v": gss.v,
-                "principalentityid": gss.principalentityid,
-                "dlttemplateid": dlttemplateid
-            }
-            headers = {"content-type": "application/x-www-form-urlencoded"}
+            url = f"{baseurl}?method={method}&send_to={send_to}&msg={msg}&msg_type={msg_type}&userid={userid}&auth_scheme={auth_scheme}&password={password}&v={v}&format={format}&principalEntityId={principalentityid}&dltTemplateId={dlttemplateid}"
 
-            response = requests.post(url, data=payload, headers=headers)
+            payload = {}
+            headers = {}
+
+            response = requests.request("POST", url, headers=headers, data=payload)
+
             
             if response.status_code == 200:
-                data = response.json()
-                status=(data['response']['status']).capitalize()
+                # data = response.json()
+                # status=(data['response']['status']).capitalize()
                 dt=now_datetime()
                 current_user = frappe.session.user
-                deatils=data['response']['details']
+                # deatils=data['response']['details']
                 
-                post_gs_history(status,gss.userid,primary_mobile,msg,dt,current_user)
-                # frappe.msgprint(strPassword)
-               
-                frappe.msgprint("Status : "+status, title='Gupshup SMS', indicator='green' if status=="Success" else 'red',wide=True)
+                post_gs_history("sucess",gss.userid,primary_mobile,msg,dt,current_user)
+            
+                frappe.msgprint("Status : Success", title='Gupshup SMS', indicator='green' if status=="Success" else 'red',wide=True)
                 
        
             else:
