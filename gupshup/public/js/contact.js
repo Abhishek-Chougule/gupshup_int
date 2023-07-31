@@ -1,8 +1,8 @@
-frappe.ui.form.on('Contact', {
+frappe.ui.form.on('Lead', {
     refresh: async function (frm) {
 
     //GupShup MrAbhi------------------------------------------------------------------------
-    frm.add_custom_button(__('Gupshup'), function() {
+    frm.add_custom_button(__('Send SMS'), function() {
         let d = new frappe.ui.Dialog({
             title: 'Gupshup SMS',
             fields: [
@@ -58,6 +58,14 @@ frappe.ui.form.on('Contact', {
         });
     
         d.show();
+    }, __("SMS"));
+    frm.add_custom_button(__('Get SMS History'), function () {
+        var previousUrl = window.location.href;
+        frappe.set_route('Report', 'Gupshup SMS Sent History');
+        window.history.replaceState({}, document.title, previousUrl);
+        window.onpopstate = function(event) {
+          window.location.href = previousUrl;
+        };
     }, __("SMS"));
     
     // ------------------------------------------------------------------------------

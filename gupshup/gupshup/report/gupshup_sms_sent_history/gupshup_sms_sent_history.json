@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2023-07-31 14:50:22.477174",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "json": "{\"filters\":[],\"fields\":[[\"name\",\"Gupshup SMS Sent History\"],[\"user_id\",\"Gupshup SMS Sent History\"],[\"sent_to\",\"Gupshup SMS Sent History\"],[\"timestamp\",\"Gupshup SMS Sent History\"],[\"message\",\"Gupshup SMS Sent History\"],[\"status\",\"Gupshup SMS Sent History\"]],\"order_by\":\"`tabGupshup SMS Sent History`.`modified` desc\",\"page_length\":20,\"column_widths\":{\"name\":120,\"user_id\":120,\"sent_to\":120,\"timestamp\":120,\"message\":120,\"status\":120},\"group_by\":null}",
+ "modified": "2023-07-31 14:50:51.730486",
+ "modified_by": "Administrator",
+ "module": "Gupshup",
+ "name": "Gupshup SMS Sent History",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Gupshup SMS Sent History",
+ "report_name": "Gupshup SMS Sent History",
+ "report_type": "Report Builder",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}
