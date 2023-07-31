@@ -13,7 +13,7 @@
   "userid",
   "auth_scheme",
   "format",
-  "user_number",
+  "principalentityid",
   "column_break_bcuuy",
   "app_name",
   "password",
@@ -68,7 +68,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "sendMessage",
+   "default": "SendMessage",
    "fieldname": "method",
    "fieldtype": "Data",
    "hidden": 1,
@@ -77,7 +77,7 @@
    "reqd": 1
   },
   {
-   "default": "text",
+   "default": "TEXT",
    "fieldname": "msg_type",
    "fieldtype": "Data",
    "hidden": 1,
@@ -86,7 +86,7 @@
    "reqd": 1
   },
   {
-   "default": "TEXT",
+   "default": "text",
    "fieldname": "format",
    "fieldtype": "Data",
    "hidden": 1,
@@ -109,15 +109,16 @@
    "label": "App Name"
   },
   {
-   "fieldname": "user_number",
+   "fieldname": "principalentityid",
    "fieldtype": "Data",
-   "label": "User Number"
+   "label": "Principal Entity Id",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-07-27 14:31:26.439298",
+ "modified": "2023-07-31 17:46:48.025351",
  "modified_by": "Administrator",
  "module": "Gupshup",
  "name": "Gupshup SMS Settings",

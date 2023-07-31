@@ -24,12 +24,13 @@ frappe.ui.form.on('Contact', {
                                 method: 'frappe.client.get_value',
                                 args: {
                                     doctype: 'Gupshup SMS Templates',
-                                    fieldname: 'message',
+                                    fieldname: ['message', 'dlttemplateid'],
                                     filters: { name: selectedTemplate }
                                 },
                                 callback: function(r) {
                                     if (r && r.message && r.message.message) {
                                         d.set_value('msg', r.message.message);
+                                        d.set_value('dlttemplateid', r.message.dlttemplateid);
                                     }
                                 }
                             });
@@ -41,6 +42,13 @@ frappe.ui.form.on('Contact', {
                     fieldname: 'msg',
                     fieldtype: 'Long Text',
                     read_only: 1
+                },
+                {
+                    label: 'dlt template id',
+                    fieldname: 'dlttemplateid',
+                    fieldtype: 'Data',
+                    read_only: 1,
+                    hidden: 1
                 }
             ],
             size: 'large', 
@@ -50,7 +58,7 @@ frappe.ui.form.on('Contact', {
                 let senttoValue = values.send_to;
                 frappe.call({
                     method: "gupshup.api.send_sms",
-                    args: { "primary_mobile": senttoValue, "msg": msgValue },
+                    args: { "primary_mobile": senttoValue, "msg": msgValue, "dlttemplateid": dlttemplateidValue },
                     callback: function(r) {}
                 });
                 d.hide();

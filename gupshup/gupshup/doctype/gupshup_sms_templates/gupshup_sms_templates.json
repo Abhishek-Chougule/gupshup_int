@@ -9,6 +9,9 @@
  "engine": "InnoDB",
  "field_order": [
   "template_name",
+  "column_break_3d423",
+  "dlttemplateid",
+  "section_break_4isv8",
   "message"
  ],
  "fields": [
@@ -22,11 +25,24 @@
    "fieldname": "message",
    "fieldtype": "Long Text",
    "label": "Message"
+  },
+  {
+   "fieldname": "column_break_3d423",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "dlttemplateid",
+   "fieldtype": "Data",
+   "label": "DLT Template Id"
+  },
+  {
+   "fieldname": "section_break_4isv8",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-27 13:24:38.541970",
+ "modified": "2023-07-31 17:26:10.369250",
  "modified_by": "Administrator",
  "module": "Gupshup",
  "name": "Gupshup SMS Templates",

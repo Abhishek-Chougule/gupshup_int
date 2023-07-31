@@ -1,6 +1,31 @@
 frappe.ui.form.on('Lead', {
     refresh: async function (frm) {
 
+        
+
+// var temp = frm.doc;
+// var mobileNumbers = [];
+// for (var prop in temp) {
+//   if ((prop==="mobile_no" || prop==="alternate_mobile_number" || prop==="primary_mobile" || prop==="phone") && isValidMobileNumber(temp[prop])) {
+//     console.log(temp[prop])
+//     var mobileNumber = temp[prop];
+//     if (!mobileNumbers.includes(mobileNumber)) {
+//     mobileNumbers.push(temp[prop]);
+//     }
+//   }
+// }
+
+// function isValidMobileNumber(mobile) {
+//     return /^\d{10}$|^\d{12}$|^\d{13}$/.test(mobile);
+// }
+// if (mobileNumbers.length > 0) {
+//   frappe.msgprint(mobileNumbers.join("\n"));
+// } else {
+//   frappe.msgprint("No mobile numbers found.");
+// }
+ 
+
+
     //GupShup MrAbhi------------------------------------------------------------------------
     frm.add_custom_button(__('Send SMS'), function() {
         let d = new frappe.ui.Dialog({
@@ -24,12 +49,13 @@ frappe.ui.form.on('Lead', {
                                 method: 'frappe.client.get_value',
                                 args: {
                                     doctype: 'Gupshup SMS Templates',
-                                    fieldname: 'message',
+                                    fieldname: ['message', 'dlttemplateid'],
                                     filters: { name: selectedTemplate }
                                 },
                                 callback: function(r) {
                                     if (r && r.message && r.message.message) {
                                         d.set_value('msg', r.message.message);
+                                        d.set_value('dlttemplateid', r.message.dlttemplateid);
                                     }
                                 }
                             });
@@ -41,16 +67,24 @@ frappe.ui.form.on('Lead', {
                     fieldname: 'msg',
                     fieldtype: 'Long Text',
                     read_only: 1
+                },
+                {
+                    label: 'dlt template id',
+                    fieldname: 'dlttemplateid',
+                    fieldtype: 'Data',
+                    read_only: 1,
+                    hidden: 1
                 }
             ],
             size: 'large', 
             primary_action_label: 'Send SMS',
             primary_action(values) {
                 let msgValue = values.msg;
+                let dlttemplateidValue = values.dlttemplateid;
                 let senttoValue = values.send_to;
                 frappe.call({
                     method: "gupshup.api.send_sms",
-                    args: { "primary_mobile": senttoValue, "msg": msgValue },
+                    args: { "primary_mobile": senttoValue, "msg": msgValue, "dlttemplateid": dlttemplateidValue },
                     callback: function(r) {}
                 });
                 d.hide();

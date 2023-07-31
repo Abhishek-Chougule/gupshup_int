@@ -26,7 +26,7 @@ def fetchTemplates():
 
 
 @frappe.whitelist()
-def send_sms(primary_mobile,msg):
+def send_sms(primary_mobile,msg,dlttemplateid):
     
     if len(primary_mobile)==10:
         primary_mobile='91'+primary_mobile
@@ -50,7 +50,9 @@ def send_sms(primary_mobile,msg):
                 "msg_type": gss.msg_type,
                 "format": gss.format,
                 "auth_scheme": gss.auth_scheme,
-                "v": gss.v
+                "v": gss.v,
+                "principalentityid": gss.principalentityid,
+                "dlttemplateid": dlttemplateid
             }
             headers = {"content-type": "application/x-www-form-urlencoded"}
 
