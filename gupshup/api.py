@@ -2,6 +2,7 @@ import frappe
 import requests
 from frappe.utils import now_datetime
 import random
+import json
 
 @frappe.whitelist()
 def fetchTemplates():
@@ -58,24 +59,24 @@ def send_sms(primary_mobile,msg,dlttemplateid):
 
             response = requests.request("POST", url, headers=headers, data=payload)
 
+            response_text = response.text.strip()
+            response_parts = response_text.split("|")
             
             if response.status_code == 200:
-                # data = response.json()
-                # status=(data['response']['status']).capitalize()
+                status = response_parts[0].strip().capitalize()
                 dt=now_datetime()
                 current_user = frappe.session.user
-                # deatils=data['response']['details']
                 
-                post_gs_history("sucess",gss.userid,primary_mobile,msg,dt,current_user)
+                post_gs_history(status,gss.userid,primary_mobile,msg,dt,current_user)
             
-                frappe.msgprint("Status : Success", title='Gupshup SMS', indicator='green',wide=True)
+                frappe.msgprint(status, title='Gupshup SMS', indicator='green',wide=True)
                 
        
             else:
                 frappe.msgprint("API request failed:", response.text)
 
     else:
-        frappe.msgprint('You have to activate Subscription / Enable Profile Enrichment !')
+        frappe.msgprint('You have to activate Subscription / Enable Gupshup Settings !')
 
 
 # Post GS History  -----------------------------------------------------------
