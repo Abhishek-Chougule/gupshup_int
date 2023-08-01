@@ -28,6 +28,8 @@ frappe.ui.form.on('Lead', {
 
 
     //GupShup MrAbhi------------------------------------------------------------------------
+    frappe.db.get_single_value('Gupshup SMS Settings', 'enabled').then(function(gupshup_enabled_name) {
+        if (gupshup_enabled_name) {
     frm.add_custom_button(__('Send SMS'), function() {
         let d = new frappe.ui.Dialog({
             title: 'Gupshup SMS',
@@ -103,7 +105,10 @@ frappe.ui.form.on('Lead', {
           window.location.href = previousUrl;
         };
     }, __("SMS"));
-    
+    }
+    }).catch(function(error) {
+        console.log("Error fetching gupshup_enabled_name:", error);
+    });
     // ------------------------------------------------------------------------------
        
 }
