@@ -1,5 +1,30 @@
 frappe.ui.form.on('Contact', {
     refresh: async function (frm) {
+    
+        var temp = frm.doc;
+        var mobileNumbers = [];
+        for (var prop in temp) {
+        if ((prop==="mobile_no" || prop==="alternate_mobile_number" || prop==="primary_mobile" || prop==="phone") && isValidMobileNumber(temp[prop])) {
+            console.log(temp[prop])
+            var mobileNumber = temp[prop];
+            if (!mobileNumbers.includes(mobileNumber)) {
+                if((temp[prop]).length===10)
+                {
+                    let mno=91+temp[prop]
+                    mobileNumbers.push(mno)
+                }
+                else{
+                    mobileNumbers.push(temp[prop]);
+                }
+                
+            }
+        }
+        }
+    
+        function isValidMobileNumber(mobile) {
+            return /^\d{10}$|^\d{12}$|^\d{13}$/.test(mobile);
+        }
+
 
     //GupShup MrAbhi------------------------------------------------------------------------
     frm.add_custom_button(__('Send SMS'), function() {
@@ -9,8 +34,8 @@ frappe.ui.form.on('Contact', {
                 {
                     label: 'Send To',
                     fieldname: 'send_to',
-                    fieldtype: 'Data',
-                    default: (frm.doc.mobile_no ? frm.doc.mobile_no : frm.doc.phone)
+                    fieldtype: 'Select',
+                    options: mobileNumbers
                 },
                 {
                     label: 'Select Template',
