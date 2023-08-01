@@ -61,7 +61,6 @@ def send_sms(primary_mobile,msg,dlttemplateid):
 
             response_text = response.text.strip()
             response_parts = response_text.split("|")
-            
             if response.status_code == 200:
                 status = response_parts[0].strip().capitalize()
                 dt=now_datetime()
