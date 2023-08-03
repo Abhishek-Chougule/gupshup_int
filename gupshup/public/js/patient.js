@@ -1,11 +1,11 @@
-frappe.ui.form.on('Lead', {
+frappe.ui.form.on('Patient', {
     refresh: async function (frm) {
-
+    
         var temp = frm.doc;
         var mobileNumbers = [];
         var mobileNumber=''
         for (var prop in temp) {
-        if ((prop==="mobile_no" || prop==="alternate_mobile_number" || prop==="primary_mobile" || prop==="phone") && isValidMobileNumber(temp[prop])) {
+        if ((prop==="mobile_no" || prop==="mobile" || prop==="alternate_mobile_number" || prop==="primary_mobile" || prop==="phone") && isValidMobileNumber(temp[prop])) {
             console.log(temp[prop])
             if((temp[prop]).length===10)
             {
@@ -17,14 +17,12 @@ frappe.ui.form.on('Lead', {
             if (!mobileNumbers.includes(mobileNumber)) {
                     mobileNumbers.push(mobileNumber);
             }
-            
         }
         }
-
-    function isValidMobileNumber(mobile) {
-        return /^\d{10}$|^\d{12}$|^\d{13}$/.test(mobile);
-    }
- 
+    
+        function isValidMobileNumber(mobile) {
+            return /^\d{10}$|^\d{12}$|^\d{13}$/.test(mobile);
+        }
 
 
     //GupShup MrAbhi------------------------------------------------------------------------
@@ -39,7 +37,6 @@ frappe.ui.form.on('Lead', {
                     fieldname: 'send_to',
                     fieldtype: 'Select',
                     options: mobileNumbers
-                    
                 },
                 {
                     label: 'Select Template',

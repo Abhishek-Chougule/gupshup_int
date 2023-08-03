@@ -13,7 +13,7 @@ app_license = "MIT"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/gupshup/css/gupshup.css"
 # app_include_js = "/assets/gupshup/js/gupshup.js"
-app_include_js = ["/assets/gupshup/js/lead.js","/assets/gupshup/js/contact.js"]
+app_include_js = ["/assets/gupshup/js/lead.js","/assets/gupshup/js/contact.js","/assets/gupshup/js/customer.js","/assets/gupshup/js/patient.js"]
 
 # include js, css files in header of web template
 # web_include_css = "/assets/gupshup/css/gupshup.css"
