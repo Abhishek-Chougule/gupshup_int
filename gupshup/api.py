@@ -51,8 +51,9 @@ def send_sms(primary_mobile,msg,dlttemplateid):
             v= gss.v
             principalentityid= gss.principalentityid
             dlttemplateid= dlttemplateid
+            mask= gss.mask
 
-            url = f"{baseurl}?method={method}&send_to={send_to}&msg={msg}&msg_type={msg_type}&userid={userid}&auth_scheme={auth_scheme}&password={password}&v={v}&format={format}&principalEntityId={principalentityid}&dltTemplateId={dlttemplateid}"
+            url = f"{baseurl}?method={method}&send_to={send_to}&msg={msg}&msg_type={msg_type}&userid={userid}&auth_scheme={auth_scheme}&password={password}&v={v}&format={format}&principalEntityId={principalentityid}&dltTemplateId={dlttemplateid}&mask={mask}"
 
             payload = {}
             headers = {}
