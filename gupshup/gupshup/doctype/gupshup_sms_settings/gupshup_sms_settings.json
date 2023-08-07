@@ -107,6 +107,12 @@
    "fieldtype": "Data",
    "label": "Principal Entity Id",
    "reqd": 1
+  },
+  {
+   "fieldname": "mask",
+   "fieldtype": "Data",
+   "label": "Mask",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
