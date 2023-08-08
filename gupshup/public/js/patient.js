@@ -94,7 +94,7 @@ frappe.ui.form.on('Patient', {
             
                 d.show();
             }, __("Gupshup"));
-            frm.add_custom_button(__('Get Templates'), function () {
+            frm.add_custom_button(__('Get Whatsapp Templates'), function () {
                 frappe.call({
                     method: 'gupshup.api.fetchTemplates',
                     args: {},
