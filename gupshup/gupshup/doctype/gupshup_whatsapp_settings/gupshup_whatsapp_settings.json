@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-08-08 12:19:25.544122",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "channel",
+  "source",
+  "column_break_sepp4",
+  "srcname",
+  "encode",
+  "content_type",
+  "apikey",
+  "maxresult",
+  "pageno"
+ ],
+ "fields": [
+  {
+   "default": "whatsapp",
+   "description": "The channel for sending messages.",
+   "fieldname": "channel",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Channel",
+   "reqd": 1
+  },
+  {
+   "description": "Registered WhatsApp Business API phone number",
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_sepp4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "The Gupshup app name registered against the phone number provided in the API.",
+   "fieldname": "srcname",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "src.name",
+   "reqd": 1
+  },
+  {
+   "default": "true",
+   "description": "This flag is used for sending an emoji in an Interactive List message. If the list message consists of emojis, set the encode flag to 'true'. This flag will not affect any other type of message.",
+   "fieldname": "encode",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Encode"
+  },
+  {
+   "default": "application/x-www-form-urlencoded",
+   "fieldname": "content_type",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Content Type"
+  },
+  {
+   "fieldname": "apikey",
+   "fieldtype": "Data",
+   "label": "APIkey",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "default": "10000",
+   "fieldname": "maxresult",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "maxResult"
+  },
+  {
+   "default": "6",
+   "fieldname": "pageno",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "pageNo"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-08-08 12:29:37.830693",
+ "modified_by": "Administrator",
+ "module": "Gupshup",
+ "name": "Gupshup Whatsapp Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

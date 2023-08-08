@@ -5,25 +5,42 @@ import random
 import json
 
 @frappe.whitelist()
+def check_balance():
+    gws=frappe.get_doc('Gupshup Whatsapp Settings')
+    apikey=gws.apikey
+    
+    url = f"https://api.gupshup.io/sm/api/v2/wallet/balance"
+
+    headers = {"apikey": apikey}
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        frappe.msgprint(response.text)
+    else:
+        frappe.msgprint(response.text)
+
+
+@frappe.whitelist()
+def sendWhatsapp():
+    pass  
+
+
+@frappe.whitelist()
 def fetchTemplates():
-    gss=frappe.get_doc('Gupshup SMS Settings')
-    appname=gss.app_name
-    apikey=gss.x_api_key
+    gws=frappe.get_doc('Gupshup Whatsapp Settings')
+    appname=gws.srcname
+    apikey=gws.apikey
     
     url = f"https://api.gupshup.io/sm/api/v1/template/list/{appname}"
 
     headers = {"apikey": apikey}
 
     response = requests.get(url, headers=headers)
-
-    gst=frappe.db.get_list('Gupshup SMS Templates',fields=['name','template_name','message'],filters={'message':str(response.text)})
-    if gst:
-        pass
+    if response.status_code == 200:
+        frappe.msgprint(response.text)
     else:
-        new_gupshup_sms_template = frappe.new_doc("Gupshup SMS Templates")
-        new_gupshup_sms_template.template_name = str(random.randint(1,100000))
-        new_gupshup_sms_template.message = str(response.text)
-        new_gupshup_sms_template.insert()
+        frappe.msgprint(response.text)
+    
 
 
 @frappe.whitelist()
