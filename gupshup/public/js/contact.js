@@ -100,13 +100,13 @@ frappe.ui.form.on('Contact', {
                         callback: function(r) {}
                     });
                 }, __("Gupshup"));
-                frm.add_custom_button(__('Check Wallet Balance'), function () {
-                    frappe.call({
-                        method: 'gupshup.api.check_balance',
-                        args: {},
-                        callback: function(r) {}
-                    });
-                }, __("Gupshup"));
+                // frm.add_custom_button(__('Check Wallet Balance'), function () {
+                //     frappe.call({
+                //         method: 'gupshup.api.check_balance',
+                //         args: {},
+                //         callback: function(r) {}
+                //     });
+                // }, __("Gupshup"));
             }
         }).catch(function(error) {
             console.log("Error fetching gupshup_enabled_name:", error);
