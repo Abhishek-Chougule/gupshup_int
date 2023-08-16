@@ -1,6 +1,6 @@
-frappe.ui.form.on('Lead', {
+frappe.ui.form.on('Customer', {
     refresh: async function (frm) {
-
+    
         var temp = frm.doc;
         var mobileNumbers = [];
         var mobileNumber=''
@@ -17,14 +17,12 @@ frappe.ui.form.on('Lead', {
             if (!mobileNumbers.includes(mobileNumber)) {
                     mobileNumbers.push(mobileNumber);
             }
-            
         }
         }
-
-    function isValidMobileNumber(mobile) {
-        return /^\d{10}$|^\d{12}$|^\d{13}$/.test(mobile);
-    }
- 
+    
+        function isValidMobileNumber(mobile) {
+            return /^\d{10}$|^\d{12}$|^\d{13}$/.test(mobile);
+        }
 
 
     //Gupshup Whatsapp #MrAbhi ----------------------------------------------------------
@@ -127,7 +125,6 @@ frappe.ui.form.on('Lead', {
                     fieldname: 'send_to',
                     fieldtype: 'Select',
                     options: mobileNumbers
-                    
                 },
                 {
                     label: 'Select Template',

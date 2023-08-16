@@ -2,27 +2,45 @@ import frappe
 import requests
 from frappe.utils import now_datetime
 import random
+import json
+
+@frappe.whitelist()
+def check_balance():
+    gws=frappe.get_doc('Gupshup Whatsapp Settings')
+    apikey=gws.apikey
+    
+    url = f"https://api.gupshup.io/sm/api/v2/wallet/balance"
+
+    headers = {"apikey": apikey}
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        frappe.msgprint(response.text)
+    else:
+        frappe.msgprint(response.text)
+
+
+@frappe.whitelist()
+def sendWhatsapp():
+    pass  
+
 
 @frappe.whitelist()
 def fetchTemplates():
-    gss=frappe.get_doc('Gupshup SMS Settings')
-    appname=gss.app_name
-    apikey=gss.x_api_key
+    gws=frappe.get_doc('Gupshup Whatsapp Settings')
+    appname=gws.srcname
+    apikey=gws.apikey
     
     url = f"https://api.gupshup.io/sm/api/v1/template/list/{appname}"
 
     headers = {"apikey": apikey}
 
     response = requests.get(url, headers=headers)
-
-    gst=frappe.db.get_list('Gupshup SMS Templates',fields=['name','template_name','message'],filters={'message':str(response.text)})
-    if gst:
-        pass
+    if response.status_code == 200:
+        frappe.msgprint(response.text)
     else:
-        new_gupshup_sms_template = frappe.new_doc("Gupshup SMS Templates")
-        new_gupshup_sms_template.template_name = str(random.randint(1,100000))
-        new_gupshup_sms_template.message = str(response.text)
-        new_gupshup_sms_template.insert()
+        frappe.msgprint(response.text)
+    
 
 
 @frappe.whitelist()
@@ -50,32 +68,32 @@ def send_sms(primary_mobile,msg,dlttemplateid):
             v= gss.v
             principalentityid= gss.principalentityid
             dlttemplateid= dlttemplateid
+            mask= gss.mask
 
-            url = f"{baseurl}?method={method}&send_to={send_to}&msg={msg}&msg_type={msg_type}&userid={userid}&auth_scheme={auth_scheme}&password={password}&v={v}&format={format}&principalEntityId={principalentityid}&dltTemplateId={dlttemplateid}"
+            url = f"{baseurl}?method={method}&send_to={send_to}&msg={msg}&msg_type={msg_type}&userid={userid}&auth_scheme={auth_scheme}&password={password}&v={v}&format={format}&principalEntityId={principalentityid}&dltTemplateId={dlttemplateid}&mask={mask}"
 
             payload = {}
             headers = {}
 
             response = requests.request("POST", url, headers=headers, data=payload)
 
-            
+            response_text = response.text.strip()
+            response_parts = response_text.split("|")
             if response.status_code == 200:
-                # data = response.json()
-                # status=(data['response']['status']).capitalize()
+                status = response_parts[0].strip().capitalize()
                 dt=now_datetime()
                 current_user = frappe.session.user
-                # deatils=data['response']['details']
                 
-                post_gs_history("sucess",gss.userid,primary_mobile,msg,dt,current_user)
+                post_gs_history(status,gss.userid,primary_mobile,msg,dt,current_user)
             
-                frappe.msgprint("Status : Success", title='Gupshup SMS', indicator='green' if status=="Success" else 'red',wide=True)
+                frappe.msgprint(status, title='Gupshup SMS', indicator='green',wide=True)
                 
        
             else:
                 frappe.msgprint("API request failed:", response.text)
 
     else:
-        frappe.msgprint('You have to activate Subscription / Enable Profile Enrichment !')
+        frappe.msgprint('You have to activate Subscription / Enable Gupshup Settings !')
 
 
 # Post GS History  -----------------------------------------------------------
