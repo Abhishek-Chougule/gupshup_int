@@ -5,7 +5,7 @@ frappe.ui.form.on('Patient', {
         var mobileNumbers = [];
         var mobileNumber=''
         for (var prop in temp) {
-        if ((prop==="mobile_no" || prop==="mobile" || prop==="alternate_mobile_number" || prop==="primary_mobile" || prop==="phone") && isValidMobileNumber(temp[prop])) {
+            if (frappe.meta.has_field(frm.doc.doctype, prop) && frappe.meta.get_field(frm.doc.doctype, prop).options === 'Phone' && isValidMobileNumber(temp[prop])){
             console.log(temp[prop])
             if((temp[prop]).length===10)
             {
